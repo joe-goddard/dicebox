@@ -1,0 +1,255 @@
+body {
+    background-color: darkolivegreen;
+    color: papayawhip;
+    font-family: cursive;
+    text-align: center;
+}
+img {
+    cursor: pointer;
+}
+button {
+    background-color: darkorange;
+    color: papayawhip;
+    padding: 1px 1px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 60px;
+    font-family: cursive;
+    outline:none;
+}
+.flavor {
+    width: 30%;
+    height: 12%;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    bottom: 76.5%;
+    left: 30%;
+    right: 30%;
+    background-color: darkcyan;
+    overflow-wrap: break-word;
+    color: palegoldenrod
+
+}
+.merch {
+    width: 70%;
+    height: 25%;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    bottom: 75%;
+    left: 15%;
+}
+.header {
+    width: 30%;
+    height: 25%;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    bottom: 50%;
+    left: 30%;
+    right: 30%
+}
+.header2 {
+    width: 5%;
+    height: 12%;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    bottom: 15%;
+    left: 80%;
+    right: 30%;
+    background-color: cadetblue;
+    z-index: 1
+}
+.header3 {
+    width: 20%;
+    height: 35%;
+    text-align: left;
+    margin: auto;
+    padding: 8px;
+    position: absolute;
+    bottom: 5%;
+    left: 64.9%;
+    background-color: cadetblue;
+}
+.header4 {
+    width: 5%;
+    height: 12%;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    bottom: 15%;
+    left: 5%;
+    background-color: cadetblue;
+    z-index: 1
+}
+.header5 {
+    width: 20%;
+    height: 35%;
+    text-align: right;
+    margin: auto;
+    padding: 8px;
+    position: absolute;
+    bottom: 5%;
+    left: 13.9%;
+    background-color: cadetblue;
+}
+.dice {
+    width: 11%;
+    height: 28%;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    bottom: 4%;
+    left: 44.5%;
+    cursor: default;
+}
+.enmydice {
+    width: 11%;
+    height: 28%;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    bottom: 4%;
+    left: 44.5%;
+    cursor: default;
+}
+.shieldico {
+    width: 11%;
+    height: 28%;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    bottom: 65%;
+    left: 85%;
+    cursor: default;
+}
+.shieldnum {
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    bottom: 72%;
+    left: 89.3%;
+    cursor: default;
+    z-index: 1
+}
+.enmyshieldico {
+    width: 11%;
+    height: 28%;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    bottom: 65%;
+    left: 85%;
+    cursor: default;
+}
+.enmyshieldnum {
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    bottom: 72%;
+    left: 89.3%;
+    cursor: default;
+    z-index: 1
+}
+.footer {
+    width: 30%;
+    height: 25%;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    bottom: 5%;
+    left: 30%;
+    right: 30%
+}
+.buttonbois1 {
+    position: absolute;
+    bottom: 30%;
+    left: 45%;
+}
+.buttonbois2 {
+    position: absolute;
+    bottom: 30%;
+    left: 42%;
+}
+.buttonbois3 {
+    position: absolute;
+    bottom: 30%;
+    left: 37%;
+}
+.buttonbois4 {
+    position: absolute;
+    bottom: 30%;
+    left: 34%;
+}
+.buttonboi {
+    position: absolute;
+    bottom: 30%;
+    left: 45.8%;
+}
+.betweenbois {
+    position: absolute;
+    bottom: 30%;
+    left: 46%;
+}
+.town {
+    background-color: darkorange;
+    color: papayawhip;
+    padding: 1px 1px;
+    margin: 4px 0;
+    border: none;
+    cursor: pointer;
+    width: 90px;
+    height: 25px;
+    font-family: cursive;
+}
+.shops {
+    background-color: darkorange;
+    color: papayawhip;
+    padding: 1px 1px;
+    margin: 4px 0;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+    height: 25px;
+    font-family: cursive;
+}
+.classname {
+    animation: shake 0.5s;
+}
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+.poison {
+    animation: poison 0.5s;
+}
+@keyframes poison {
+    from { background: green; }
+    to   { background: default; }
+}
+.shield {
+    animation: shield 0.5s;
+}
+@keyframes shield {
+    from { background: white; }
+    to   { background: default; }
+}
+.heal {
+    animation: heal 0.5s;
+}
+@keyframes heal {
+    from { background: red; }
+    to   { background: default; }
+}
