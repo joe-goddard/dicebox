@@ -1,14 +1,13 @@
 var attacks = false;
 var xp = 0;
-var lvl = 3;
+var lvl = 0;
 var reqxp = 3;
 var enemyhp = document.getElementById('enemyHealth').innerHTML;
 var hp = document.getElementById('health').innerHTML;
 var maxhp = document.getElementById('maxhealth').innerHTML;
 var enmymaxhp = 10;
-var gold = 6578;
+var gold = 0;
 var damMod = 0;
-var up = 1;
 var drunk = 0;
 var drunkdam = 0;
 var sword = false;
@@ -64,6 +63,7 @@ function roll() {
     medkita.style.display = "inline-block";
     }
     if (enemyhp < 1) {
+        document.getElementById('flavorText').innerHTML = 'the ' + document.getElementById('name').innerHTML + ' dies an acidic death';
         xp = xp + 1;
         document.getElementById('xp').innerHTML = xp;
         gold = gold + lvl + Math.floor(Math.random() * 6)+1;
@@ -72,28 +72,28 @@ function roll() {
         nmyshield = 0
         document.getElementById('shielddisp').innerHTML = nmyshield;
         if (overkill1up == true) {
-        overkill1 = enemyhp
+        overkill1 = enemyhp;
         }
         if (overkill2up == true) {
-        overkill2 = poison
+        overkill2 = poison;
         }
         if (overkill3up == true) {
-        overkill3 = shield
+        overkill3 = shield;
         }
-        shield = 0
+        shield = 0;
         document.getElementById('plshielddisp').innerHTML = shield;
         attacks = true;
         flavor();
         if (boss1 == true) {
-            boss1 = false
-            black = false
-            xp = reqxp
+            boss1 = false;
+            black = false;
+            xp = reqxp;
             document.getElementById('flavorText').innerHTML = 'as you defeat the blacksmith everything fades to black, you wake up in a clearing next to two strange looking merchants';
         }
         if (boss2 == true) {
-            boss2 = false
-            amal = false
-            xp = reqxp
+            boss2 = false;
+            amal = false;
+            xp = reqxp;
             document.getElementById('flavorText').innerHTML = 'the amalgam is vanquished, and you fall into a deep sleep';
         }
         if (xp === reqxp) {
@@ -108,13 +108,7 @@ function roll() {
         attacks = false;
     }
     if (hp < 1) {
-        document.getElementById('player').innerHTML = 'DEAD';
-        var elem = document.getElementById("all");
-        elem.parentNode.removeChild(elem);
-        var y = document.getElementById("ded");
-        if (y.style.display === "none") {
-            y.style.display = "block";
-        }
+        location.reload()
     }
 }
 // -----------------------------------------------------------------------------------------------------------------          
@@ -141,39 +135,42 @@ function attack() {
     medkita.style.display = "none";
     }
     if (enemyhp < 1) {
+        var verb = ["annihilate", "destroy", "obliterate", "decimate", "eradicate", "neutralise", "expunge"]
+        verb = verb[Math.floor(Math.random() * verb.length)];
+        document.getElementById('flavorText').innerHTML = 'you ' + verb + ' the ' + document.getElementById('name').innerHTML;
         xp = xp + 1;
         document.getElementById('xp').innerHTML = xp;
         gold = gold + lvl*3 + Math.floor(Math.random() * 6)+1;
         document.getElementById('gold').innerHTML = gold;
         enemyCount = enemyCount + 1;
-        nmyshield = 0
+        nmyshield = 0;
         document.getElementById('shielddisp').innerHTML = nmyshield;
         if (overkill1up == true) {
-        overkill1 = enemyhp
+        overkill1 = enemyhp;
         }
         if (overkill2up == true) {
-        overkill2 = poison
+        overkill2 = poison;
         }
         if (overkill3up == true) {
-        overkill3 = shield
+        overkill3 = shield;
         }
         if (drunk > -1) {
         drunk = drunk - 1;
         }
-        shield = 0
+        shield = 0;
         document.getElementById('plshielddisp').innerHTML = shield;
         attacks = false;
         flavor();
         if (boss1 == true) {
-            boss1 = false
-            black = false
-            xp = reqxp
+            boss1 = false;
+            black = false;;
+            xp = reqxp;
             document.getElementById('flavorText').innerHTML = 'as you defeat the merchant everything fades to black, you wake up in a clearing next to two strange looking merchants';
         }
         if (boss2 == true) {
-            boss2 = false
-            amal = false
-            xp = reqxp
+            boss2 = false;
+            amal = false;
+            xp = reqxp;
             document.getElementById('flavorText').innerHTML = 'the amalgam is vanquished, and you fall into a deep sleep';
         }
         if (xp === reqxp) {
@@ -341,7 +338,7 @@ function next() {
     overkill2 = 0;
     overkill3 = 0;
         if (hp < maxhp/2) {
-    hp = Math.floor(maxhp * 0.5);
+    hp = Math.floor(maxhp * 0.8);
     document.getElementById("health").innerHTML = hp;
         }
         if (black == true) {
@@ -367,6 +364,12 @@ function next() {
 
     var names = ["amarok", "aligator", "bunyip", "ogre", "devious pineapple", "skinless wallaby", "chupacabra", "gremlin", "kludde", "clive", "morgawr", "gollem", "faerie", "aqrabuamelu", "camazotz", "gogmagog", " a rabbit", "hecatoncheires", "ogopogo", "clurichaun", "cockatrice", "akaname", "gargoyle", "buraq", "bugil noz", "bukavac", "elepaio"];
     document.getElementById('name').innerHTML = names[Math.floor(Math.random() * names.length)];
+        if (boss1 == false) {
+        document.getElementById('flavorText').innerHTML = 'you face the ' + document.getElementById('name').innerHTML;
+        }
+        else if (boss1 == true) {
+        document.getElementById('flavorText').innerHTML = '"FOOLISH MORTAL, YOU SHALL DRAW YOUR LAST BREATH"';
+        }
     }
     outside = true;
 }
@@ -374,13 +377,14 @@ function next() {
 function levelup() {
     lvl = lvl + 1;
     reqxp = reqxp + 1;
-    maxhp = Math.floor(maxhp * 1.4);
+    maxhp = Math.floor(maxhp * 1.6);
     hp = maxhp;
     enmymaxhp = Math.floor(enmymaxhp * 1.6);
     document.getElementById('maxhealth').innerHTML = maxhp;
     document.getElementById('health').innerHTML = hp;
     document.getElementById('lvl').innerHTML = lvl;
     xp = 0;
+    document.getElementById('xp').innerHTML = xp;
     if (black === true) {
     var elem = document.getElementById("enemy");
     elem.style.display = "none";
@@ -394,8 +398,9 @@ function levelup() {
     if (y.style.display === "none") {
         y.style.display = "block";
     }
+        document.getElementById('flavorText').innerHTML = 'you return to the town';
     }
-    if (black === false && lvl < 6) {
+    if (black === false && lvl == 4) {
     var elem = document.getElementById("enemy");
     elem.style.display = "none";
     var elem2 = document.getElementById("buttons");
@@ -408,6 +413,21 @@ function levelup() {
     if (y.style.display === "none") {
         y.style.display = "block";
     }
+}
+    if (black === false && lvl > 4) {
+    var elem = document.getElementById("enemy");
+    elem.style.display = "none";
+    var elem2 = document.getElementById("buttons");
+    elem2.style.display = "none";
+    var y = document.getElementById("merchants");
+    if (y.style.display === "none") {
+        y.style.display = "block";
+    }
+    var y = document.getElementById("town");
+    if (y.style.display === "none") {
+        y.style.display = "block";
+    }
+    document.getElementById('flavorText').innerHTML = 'you make your way back to the clearing';
 }
     if (black === false && lvl == 6) {
     document.getElementById('flavorText').innerHTML = 'the merchants look particularly strange...';
@@ -562,9 +582,8 @@ function openEnch() {
 function upgradeWeapon() {
     if (sword == true) {
         if (gold > 9) {
-            var dice = Math.floor(Math.random() * 6)+1;
-            damMod = damMod + up;
-            up = up + 1;
+            damMod = damMod + 1;
+            document.getElementById('swordinv').innerHTML = '- a wooden sword +' + damMod;
             gold = gold - 10;
             document.getElementById('gold').innerHTML = gold;
             document.getElementById('flavorText').innerHTML = 'h-thath-sha-loch says "ah! another one of my perfect fixins! heheheh"';
@@ -579,13 +598,13 @@ function upgradeWeapon() {
     }
         document.getElementById('flavorText').innerHTML = '"FOOLISH MORTAL, YOU SHALL DRAW YOUR LAST BREATH"';
         outside = true;
+        boss1 = true;
         next();
         eenmymaxhp = Math.floor(enmymaxhp * 1.5);
         document.getElementById("enemymaxhealth").innerHTML = enmymaxhp;
         enemyhp = enmymaxhp;
         document.getElementById("enemyHealth").innerHTML = enemyhp;
         document.getElementById('name').innerHTML = 'h-thath-sha-loch';
-        boss1 = true;
         var elem = document.getElementById("between");
         elem.style.display = "none";
         var y = document.getElementById("buttons");
@@ -619,62 +638,69 @@ function drink() {
 }
 // -----------------------------------------------------------------------------------------------------------------  
 function buy1() {
-    if (gold > 14 && sword == false) {
-        gold = gold - 15;
+    if (gold > 9 && sword == false) {
+        gold = gold - 10;
         document.getElementById('gold').innerHTML = gold;
         sword = true;
         document.getElementById('flavorText').innerHTML = 'the shopkeeper says to you "if ya pop over to h-thath-sha-lochs blacksmithery he just might fix that up for ya"';
+        document.getElementById('swordinv').innerHTML = '- a wooden sword';
     }
 }
 // -----------------------------------------------------------------------------------------------------------------
 function buy2() {
-    if (gold > 24 && vialitem == false && sword == true) {
-        gold = gold - 25;
+    if (gold > 14 && vialitem == false && sword == true) {
+        gold = gold - 15;
         document.getElementById('gold').innerHTML = gold;
         vialitem = true;
         document.getElementById('flavorText').innerHTML = 'the shopkeeper says to you "you could do some dang serious damage with that stuff! over time that is"';
+        document.getElementById('vialinv').innerHTML = '- an acid vial';
+        document.getElementById("buttons").className = "buttonbois2";
     }
-    document.getElementById("buttons").className = "buttonbois2";
 }
 // -----------------------------------------------------------------------------------------------------------------
 function buy3() {
-    if (gold > 39 && medkititem == false && sword == true && vialitem == true) {
-        gold = gold - 40;
+    if (gold > 19 && medkititem == false && sword == true && vialitem == true) {
+        gold = gold - 20;
         document.getElementById('gold').innerHTML = gold;
         medkititem = true
         document.getElementById('flavorText').innerHTML = 'the shopkeeper says to you "yeh mate this stuffll fix ya up good and strong"';
+        document.getElementById('medinv').innerHTML = '- a medkit';
+        document.getElementById("buttons").className = "buttonbois3";
     }
-    document.getElementById("buttons").className = "buttonbois3";
 }
 // -----------------------------------------------------------------------------------------------------------------
 function buy4() {
-    if (gold > 59 && shielditem == false && medkititem == true && sword == true && vialitem == true) {
-        gold = gold - 60;
+    if (gold > 24 && shielditem == false && medkititem == true && sword == true && vialitem == true) {
+        gold = gold - 25;
         document.getElementById('gold').innerHTML = gold;
         shielditem = true;
         document.getElementById('flavorText').innerHTML = 'the shopkeeper says to you "yeh mate this should take the brunt of a good bit of damage"';
+        document.getElementById('shieldinv').innerHTML = '- a shield';
         var y = document.getElementById("enshieldd");
         y.style.display = "block";
         var y = document.getElementById("plshieldd");
         y.style.display = "block";
+        document.getElementById("buttons").className = "buttonbois4";
         }
-    document.getElementById("buttons").className = "buttonbois4";
 }
 // -----------------------------------------------------------------------------------------------------------------
 function upgradeEquipment() {
-    if (gold > 49) {
-        gold = gold - 50;
+    if (gold > 14) {
+        gold = gold - 15;
         document.getElementById('gold').innerHTML = gold;
         document.getElementById('flavorText').innerHTML = 'the tinker takes one of your items and does something to it in a blur"';
         var ran = Math.floor(Math.random() * 6)+1;
         if (ran == 6) {
             poisonmod = poisonmod + 1;
+            document.getElementById('vialinv').innerHTML = '- an acid vial +' + poisonmod;
         }
         if (ran == 3 || ran == 4 || ran == 5) {
             medmod = medmod + 1;
+            document.getElementById('medinv').innerHTML = '- a medkit +' + medmod;
         }
         if (ran == 1 || ran == 2) {
             shieldmod = shieldmod + 1;
+            document.getElementById('shieldinv').innerHTML = '- a shield +' + shieldmod;
         }
     }
 }
@@ -820,16 +846,6 @@ function choicesAttack() {
 // -----------------------------------------------------------------------------------------------------------------
 function inven() {
     var x = document.getElementById("inven");
-if (x.style.display === "none") {
-    x.style.display = "block";
-} 
-    else {
-        x.style.display = "none";
-    }
-}
-// -----------------------------------------------------------------------------------------------------------------
-function rule() {
-    var x = document.getElementById("rule");
 if (x.style.display === "none") {
     x.style.display = "block";
 } 
